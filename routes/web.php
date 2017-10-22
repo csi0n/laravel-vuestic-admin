@@ -10,8 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-if (is_debug())
-    auth()->loginUsingId(1);
-Route::get('/', function () {
-    return view('index');
-});
+if ( is_debug() ) {
+	auth()->loginUsingId( 1 );
+}
+Route::get( '/', function () {
+	return view( 'index' );
+} );

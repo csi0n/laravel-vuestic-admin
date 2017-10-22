@@ -9,7 +9,6 @@
 </head>
 <body>
 <div id="app"></div>
-@routes
 <script src="{{mix('js/all.js')}}" type="text/javascript"></script>
 </body>
 </html>

@@ -36,7 +36,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-info" @click.native="storePermission">
+                                        <button class="btn btn-info" @click="storePermission">
                                             添加
                                         </button>
                                     </div>
