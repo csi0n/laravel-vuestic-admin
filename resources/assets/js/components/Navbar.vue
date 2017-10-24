@@ -2,7 +2,7 @@
     <nav class="navbar app-navbar navbar-toggleable-md">
         <div class="navbar-brand-container d-flex align-items-center justify-content-start">
             <a class="navbar-brand" href="#">
-                风控系统
+                {{title}}
                 <!--<i class="i-vuestic"></i>-->
             </a>
         </div>
@@ -89,6 +89,11 @@
             'sidebarOpened',
             'toggleWithoutAnimation'
         ]),
+        data(){
+            return {
+                title:Settings.title
+            }
+        },
         methods: {
             ...mapActions([
                 'toggleSidebar',

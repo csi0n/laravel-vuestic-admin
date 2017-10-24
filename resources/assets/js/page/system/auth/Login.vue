@@ -52,7 +52,6 @@
 
 <script>
     import {systemLogin} from './../../../api/api';
-
     export default {
         data() {
             return {

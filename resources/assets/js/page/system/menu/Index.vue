@@ -74,8 +74,8 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input id="url_name" v-model="form.url_name" required/>
-                                <label class="control-label" for="url_name">菜单URL名称</label><i class="bar"></i>
+                                <input id="url" v-model="form.url" required/>
+                                <label class="control-label" for="url">菜单URL名称</label><i class="bar"></i>
                             </div>
                         </div>
                         <div class="form-group">
@@ -133,7 +133,7 @@
                     language: '',
                     icon: '',
                     slug: '',
-                    url_name: '',
+                    url: '',
                     description: '',
                     sort: 0,
                     status: 'enable'
@@ -188,7 +188,8 @@
                     closeOnCancel: false
                 }, (isConfirm) => {
                     if (isConfirm) {
-                        deleteSystemMenu(this.form).then(() => {
+                        deleteSystemMenu(menu).then(() => {
+                            this.refreshMenu();
                             swal("已删除!", "菜单已经删除", "success");
                         }).catch(() => {
                             swal("失败", "菜单删除失败", "error");
@@ -197,7 +198,7 @@
                         swal("取消", "取消操作", "error");
                     }
                 });
-                this.refreshMenu();
+
             },
             optionMenu() {
                 if (this.is_edit) {

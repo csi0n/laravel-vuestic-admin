@@ -20,7 +20,6 @@
 </template>
 <script>
     import {List,destroySystemPermission} from './../../../api/api';
-
     export default {
         data() {
             return {

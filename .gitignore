@@ -12,3 +12,4 @@ yarn-error.log
 .env
 composer.lock
 yarn.lock
+dump.rdb

@@ -1,16 +1,18 @@
 import axios from 'axios';
+import {App} from 'laravel-admin-api';
 
 let instance = axios.create({
+    baseURL: '/laravel-admin-api/api/',
     header: {}
 });
-
+let app = new App({type: 'axios', instance: instance});
 instance.interceptors.response.use((response) => {
     return response;
 }, (error) => {
     switch (error.response.status) {
         case 422:
             for (let i in error.response.data) {
-               console.log(i);
+                console.log(i);
             }
             break;
         case 500:
@@ -23,100 +25,99 @@ instance.interceptors.response.use((response) => {
 });
 
 export const systemLogin = params => {
-    return instance.post(`/laravel-admin-api/api/login`, params);
+    return app.api.auth.postLogin(params);
 };
 
 export const systemLogout = params => {
-    return instance.get(`/laravel-admin-api/api/logout`, params);
+    return app.api.auth.getLogout();
 };
 
 export const getSystemMenu = params => {
-    return instance.get(`/laravel-admin-api/api/menu`, params);
+    return app.api.menu.getMenu();
 };
 
 export const storeSystemMenu = params => {
-    return instance.post(`/laravel-admin-api/api/menu`, params);
+    return app.api.menu.storeMenu(params);
 };
 
 export const deleteSystemMenu = params => {
-    return instance.delete(`/laravel-admin-api/api/menu/${params.id}`, params);
+    console.log(params);
+    return app.api.menu.deleteMenu(params);
 };
 
 export const patchSystemMenu = params => {
-    return instance.patch(`/laravel-admin-api/api/menu/${params.id}`, params);
+    return app.api.menu.patchMenu(params);
 };
 
 export const sortSystemMenu = params => {
-    return instance.post(`/laravel-admin-api/api/menu/sort`, params);
+    return app.api.menu.sortMenu(params);
 };
 
 export const getSystemPermission = params => {
-    return instance.get(`/laravel-admin-api/api/permission`, {params: params});
+    return app.api.permission.getPermission(params);
 };
 
 export const storeSystemPermission = params => {
-    return instance.post(`/laravel-admin-api/api/permission`, params);
+    return app.api.permission.storePermission(params);
 };
 
 export const editSystemPermission = params => {
-    return instance.get(`/laravel-admin-api/api/permission/${params.id}/edit`);
+    return app.api.permission.editPermission(params);
 };
 
 export const showSystemPermission = params => {
-    return instance.get(`/laravel-admin-api/api/permission/${params.id}`);
+    return app.api.permission.showPermission(params);
 };
 
 export const patchSystemPermission = params => {
-    return instance.patch(`/laravel-admin-api/api/permission/${params.id}`, params);
+    return app.api.permission.patchPermission(params);
 };
 
 export const destroySystemPermission = params => {
-    return instance.delete(`/laravel-admin-api/api/permission/${params.id}`);
+    return app.api.permission.deletePermission(params);
 };
 
 export const getSystemRole = params => {
-    return instance.get(`/laravel-admin-api/api/role`, {params: params})
+    return app.api.role.getRole(params);
 };
 export const storeSystemRole = params => {
-    return instance.post(`/laravel-admin-api/api/role`, params);
+    return app.api.role.storeRole(params);
 };
 
 export const editSystemRole = params => {
-    return instance.get(`/laravel-admin-api/api/role/${params.id}/edit`);
+    return app.api.role.editRole(params);
 };
 
 export const showSystemRole = params => {
-    return instance.get(`/laravel-admin-api/api/role/${params.id}`);
+    return app.api.role.showRole(params);
 };
 
-
 export const patchSystemRole = params => {
-    return instance.patch(`/laravel-admin-api/api/role/${params.id}`, params);
+    return app.api.role.patchRole(params);
 };
 
 export const destroySystemRole = params => {
-    return instance.delete(`/laravel-admin-api/api/role/${params.id}`, params);
+    return app.api.role.deleteRole(params);
 };
 
-
 export const storeSystemUser = params => {
-    return instance.post(`/laravel-admin-api/api/user`, params);
+    return app.api.user.storeUser(params);
 };
 
 export const editSystemUser = params => {
-    return instance.get(`/laravel-admin-api/api/user/${params.id}/edit`);
+    return app.api.user.editUser(params);
 };
 
 export const showSystemUser = params => {
-    return instance.get(`/laravel-admin-api/api/user/${params.id}`);
+    return app.api.user.showUser(params);
 };
 
 export const patchSystemUser = params => {
-    return instance.patch(`/laravel-admin-api/api/user/${params.id}`, params);
+    return app.api.user.patchUser(params);
 };
 
 export const destroySystemUser = params => {
-    return instance.delete(`/laravel-admin-api/api/user/${params.id}`, params);
+    return app.api.user.deleteUser(params);
 };
 
 export const List = {
